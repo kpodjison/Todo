@@ -48,7 +48,7 @@
 
 
 @section('footer')
-    <h5>this is my foooter</h5>
+{{--    <h5>this is my foooter</h5>--}}
 @show
 
 
