@@ -32,7 +32,7 @@
                         <a class="nav-link" href="#">All Todo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Todo</a>
+                        <a class="nav-link" href="/add-todo">Add Todo</a>
                     </li>
 
                 </ul>
@@ -48,7 +48,7 @@
 
 
 @section('footer')
-    <h1>this is my foooter</h1>
+    <h5>this is my foooter</h5>
 @show
 
 

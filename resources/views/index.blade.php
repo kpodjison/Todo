@@ -8,7 +8,16 @@
 @section('main-content')
    <h3 class="text-center my-2">Latest Todos</h3>
    <div class="table-responsive row">
+
        <div class="col-md-10 offset-md-1">
+           @if (session('success'))
+               <div class="alert alert-success alert-dismissible fade show " role="alert">
+                   <p>{{ session('success') }}</p>
+                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+           @endif
+
+
             <table class="table table-striped">
            <thead>
            <tr>
