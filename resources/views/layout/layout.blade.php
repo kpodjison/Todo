@@ -41,14 +41,16 @@
     </nav>
 @show
 
-<div class="container-fluid">
+<div class="container-fluid " id="main-content">
     @yield('main-content')
 </div>
 
 
 
 @section('footer')
-{{--    <h5>this is my foooter</h5>--}}
+ <div class="container-fluid bg-secondary text-white p-3 text-center">
+     <p>Designed by Kpodji Emmanuel Kwasi &copy;{{date('Y')}}</p>
+ </div>
 @show
 
 
@@ -59,7 +61,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-
     //handle delete todo
     function deleteTodo(id){
         let confirmAction = confirm('Are you sure you want to delete this Item?')
@@ -138,5 +139,10 @@
 
 
 </script>
+<style>
+    #main-content{
+        min-height: 100vh;
+    }
+</style>
 </body>
 </html>

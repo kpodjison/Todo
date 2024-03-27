@@ -13,6 +13,11 @@ class TodoController extends Controller
          $latestTodos = Todo::whereDate('created_at','<=',now()->today())->paginate(5);
          return view('index')->with('latestTodos',$latestTodos);
      }
+    public function allTodoIndex(){
+
+        $allTodos = Todo::paginate(5);
+        return view('allTodoIndex')->with('latestTodos',$allTodos);
+    }
 
     public function addToDoIndex(){
         return view('addToDoIndex');
@@ -36,7 +41,6 @@ class TodoController extends Controller
         }catch (\Exception $e){
             return redirect()->back()->with('errorMsg', 'Failed To Added Item!!');
         }
-
 
     }
 

@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title','Home')
+@section('title','All')
 
 @section('header')
     @parent
@@ -7,7 +7,7 @@
 
 @section('main-content')
 
-   <h3 class="text-center my-2">Latest Todos</h3>
+   <h3 class="text-center my-2">All Todos</h3>
    <div class="table-responsive row">
        <div class="col-md-10 offset-md-1">
            @if (session('success'))
