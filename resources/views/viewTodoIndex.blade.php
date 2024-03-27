@@ -46,7 +46,7 @@
                            @else
                                <button type="button" class="btn btn-success rounded"> <i class="fa-solid fa-check"></i></button>
                            @endif
-                           <button type="button" class="btn btn-danger rounded"><i class="fa-solid fa-trash"></i></button>
+                           <button type="button" class="btn btn-danger rounded" onclick="deleteTodo({{$todoItem->id}})"><i class="fa-solid fa-trash"></i></button>
 
                        </div>
                    </td>

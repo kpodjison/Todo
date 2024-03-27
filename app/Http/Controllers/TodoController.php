@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use mysql_xdevapi\Exception;
 
 class TodoController extends Controller
 {
@@ -95,6 +96,17 @@ class TodoController extends Controller
             return redirect()->back()->with('errorMsg', 'Item Not Found!!');
         }
 
+    }
+
+    public function deleteTodo($id){
+
+        try {
+            $todo = Todo::find($id);
+            $todo->delete();
+            return  \response()->json(['message' => "Item Deleted Successfully"], 200);
+        }catch (\Exception $e){
+            return  \response()->json(['errorMsg' => 'Failed to Delete Item!!']);
+        }
     }
 
 
