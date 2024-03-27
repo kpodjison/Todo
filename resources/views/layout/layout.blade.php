@@ -62,10 +62,9 @@
 
     //handle delete todo
     function deleteTodo(id){
-        let confirmDelete = confirm('Are you sure you want to delete this Item?')
+        let confirmAction = confirm('Are you sure you want to delete this Item?')
         let urlChecker = checkCurrentUrl('/view-todo/');
-        console.log('chck url',urlChecker);
-        if(confirmDelete){
+        if(confirmAction){
             axios.post(`/delete-todo/${id}`)
                 .then(function (res) {
                     alert(res.data?.message)
@@ -82,6 +81,54 @@
         }
 
     }
+
+    // handle complete todo
+    function completeTodo(item){
+       let data ={
+           name: item.name,
+           status: 'completed',
+           changed: true
+       }
+        console.log('item',data)
+        let confirmActionconfirmAction = confirm('Are you sure you want to mark this Item as completed?')
+        if(confirmActionconfirmAction){
+            axios.post(`/edit-todo/${item.id}`,data)
+                .then(function (res) {
+                    alert(res.data?.message)
+                    window.location.reload()
+                })
+                .catch((e) =>{
+                    alert(res.data?.error)
+                });
+        }
+
+    }
+
+    // handle set todo as pending
+    function setTodoPending(item){
+        console.log(item)
+        let data ={
+            name: item.name,
+            status: 'pending',
+            changed: true
+        }
+        console.log('item',data)
+        let confirmAction = confirm('Are you sure you want to mark this Item as Pending?')
+        if(confirmAction){
+            axios.post(`/edit-todo/${item.id}`,data)
+                .then(function (res) {
+                    alert(res.data?.message)
+                    window.location.reload()
+                })
+                .catch((e) =>{
+                    alert(res.data?.error)
+                });
+        }
+
+    }
+
+
+
   // url checker
     function checkCurrentUrl(url){
         let currentUrl = window.location.href;

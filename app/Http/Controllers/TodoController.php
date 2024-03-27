@@ -54,10 +54,12 @@ class TodoController extends Controller
     }
     public function editToDo(Request $request,$id){
 
+
         $validator = Validator::make($request->all(),
             [
                 'name' => 'required|string|max:30',
-                'status' => 'nullable|string|max:9'
+                'status' => 'nullable|string|max:9',
+                'changed' =>'nullable|boolean'
             ]);
 
         if($validator->fails()){
@@ -71,9 +73,18 @@ class TodoController extends Controller
                 'name' => $request['name'],
                 'status' => $request['status']
             ]);
+
+            if( isset($request['changed'])){
+                return  \response()->json(['message' => "Item Status Updated Successfully"], 200);
+            }
             return redirect()->route('view-todo')->with('todoItem', $todoItem);
 
         } catch (\Exception $e) {
+            if( isset($request['changed'])){
+                return  \response()->json(['errorMsg' => 'Failed to Update Item Status!!']);
+
+            }
+
             return redirect()->back()->with('errorMsg', 'Failed To Update Item!!');
         }
 

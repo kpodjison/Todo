@@ -42,9 +42,15 @@
                        <div class="btn-group gap-2 btn-sm" role="group">
                            <a href="/edit-todo/{{$todoItem->id}}" type="button" class="btn btn-info rounded"><i class="fa-regular fa-pen-to-square"></i></a>
                            @if($todoItem->status == 'completed')
-                               <button type="button" class="btn btn-warning rounded"><i class="fa-regular fa-circle-xmark"></i></button>
+                               <button type="button" class="btn btn-success rounded"
+                                       onclick="setTodoPending({{$todoItem}},)">
+                                   <i class="fa-solid fa-check"></i>
+                               </button>
                            @else
-                               <button type="button" class="btn btn-success rounded"> <i class="fa-solid fa-check"></i></button>
+                               <button type="button" class="btn btn-warning rounded"
+                                       onclick="completeTodo({{$todoItem}},)">
+                                   <i class="fa-regular fa-circle-xmark"></i>
+                               </button>
                            @endif
                            <button type="button" class="btn btn-danger rounded" onclick="deleteTodo({{$todoItem->id}})"><i class="fa-solid fa-trash"></i></button>
 
