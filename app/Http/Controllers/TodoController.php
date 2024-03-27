@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Validator;
 class TodoController extends Controller
 {
      public function index(){
-         return view('index');
+         $latestTodos = Todo::whereDate('created_at','<=',now()->today())->paginate(5);
+         return view('index')->with('latestTodos',$latestTodos);
      }
 
     public function addToDoIndex(){
