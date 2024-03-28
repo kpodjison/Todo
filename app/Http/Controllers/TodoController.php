@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use mysql_xdevapi\Exception;
@@ -10,13 +11,36 @@ use mysql_xdevapi\Exception;
 class TodoController extends Controller
 {
      public function index(){
-         $latestTodos = Todo::whereDate('created_at','<=',now()->today())->paginate(5);
+
+              $latestTodos = Todo::whereDate('created_at','<=',now()->today())
+                  ->paginate(5);
          return view('index')->with('latestTodos',$latestTodos);
      }
     public function allTodoIndex(){
 
         $allTodos = Todo::paginate(5);
         return view('allTodoIndex')->with('latestTodos',$allTodos);
+    }
+
+    public function filterTodo(Request $request){
+
+        $filter = $request->status;
+        if( $filter != null){
+            if(isset($request->filter->flag) && $request->filter->flag == "latest-todo"){
+                $latestTodos = Todo::whereDate('created_at','<=',now()->today())
+                    ->where('status',$filter)
+                    ->paginate(5);
+                return view('index')->with('latestTodos',$latestTodos);
+            }
+            else{
+                $latestTodos = Todo::where('status',$filter)
+                    ->paginate(5);
+                return view('allTodoIndex')->with('latestTodos',$latestTodos);
+            }
+
+        }
+
+
     }
 
     public function addToDoIndex(){
