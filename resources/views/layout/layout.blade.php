@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="all-todo">All Todo</a>
+                        <a class="nav-link" href="/all-todo">All Todo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/add-todo">Add Todo</a>
