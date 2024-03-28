@@ -32,8 +32,8 @@
         </div>
 
     </div>
-   <div class="table-responsive row">
-       <div class="col-md-10 offset-md-1">
+   <div class="table-responsive row ">
+       <div class="col-md-10 offset-md-1 border p-2 rounded">
            @if (session('success'))
                <div class="alert alert-success alert-dismissible fade show " role="alert">
                    <p>{{ session('success') }}</p>
