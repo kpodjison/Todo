@@ -119,7 +119,7 @@ class TodoController extends Controller
     }
 
     public function viewTodo(){
-        return view('viewToDoIndex')
+        return view('viewTodoIndex')
             ->with('todoItem',session('todoItem'))
             ->with('success', 'Item Updated Successfully');
     }
@@ -127,7 +127,7 @@ class TodoController extends Controller
         try {
 
             $todoItem = Todo::findOrFail($id);
-            return view('viewToDoIndex')
+            return view('viewTodoIndex')
                 ->with('todoItem',$todoItem)
                 ->with('success', 'Item Updated Successfully');
 
